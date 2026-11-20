@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071827">
+    <title>AQUAGUARD AI | Water Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">🌊</div>
+            <div>
+                <h2>AQUAGUARD</h2>
+                <span>AI WATER INTELLIGENCE</span>
+            </div>
+        </div>
+
+        <div class="menu-label">MAIN MENU</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-link active">
+                <span>▦</span> Dashboard
+            </a>
+            <a href="#stations" class="nav-link">
+                <span>◉</span> Monitoring Stations
+            </a>
+            <a href="#analytics" class="nav-link">
+                <span>▥</span> Water Analytics
+            </a>
+            <a href="#alerts" class="nav-link">
+                <span>⚠</span> Smart Alerts
+            </a>
+            <a href="#investigation" class="nav-link">
+                <span>⌕</span> AI Investigation
+            </a>
+            <a href="#simulator" class="nav-link">
+                <span>⟳</span> Contamination Simulator
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="system-indicator">
+                <span class="online-dot"></span>
+                Monitoring Demo Active
+            </div>
+            <p>AQUAGUARD AI v1.0</p>
+            <p>Predict. Protect. Prevent.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <header class="topbar">
+            <div>
+                <h1>Environmental Command Center</h1>
+                <p>Water quality monitoring and intelligence dashboard</p>
+            </div>
+
+            <div class="top-actions">
+                <div class="system-status">
+                    <span class="online-dot"></span>
+                    System Online
+                </div>
+                <button class="refresh-btn" id="refreshBtn">
+                    ↻ Refresh
+                </button>
+            </div>
+        </header>
+
+        <section class="welcome-section">
+            <div>
+                <span class="eyebrow">ENVIRONMENTAL INTELLIGENCE PLATFORM</span>
+                <h2>Welcome to AquaGuard AI</h2>
+                <p>Monitor water quality. Detect unusual patterns. Protect water resources.</p>
+            </div>
+            <div class="date-card">
+                <span>LOCAL SYSTEM TIME</span>
+                <h3 id="clock">--:--:--</h3>
+                <p id="date">Loading date...</p>
+            </div>
+        </section>
+
+        <!-- KPI CARDS -->
+        <section class="kpi-grid">
+
+            <article class="kpi-card">
+                <div class="kpi-heading">
+                    <span>AquaRisk Score</span>
+                    <span class="kpi-icon cyan">◈</span>
+                </div>
+                <h2 id="riskScore">32<span>/100</span></h2>
+                <p id="riskLabel" class="moderate-text">Moderate estimated risk</p>
+                <div class="progress-track">
+                    <div class="progress-fill cyan-fill" id="riskProgress"></div>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-heading">
+                    <span>Active Stations</span>
+                    <span class="kpi-icon blue">◉</span>
+                </div>
+                <h2 id="stationCount">05</h2>
+                <p class="positive-text">Monitoring network</p>
+                <div class="mini-bars">
+                    <i></i><i></i><i></i><i></i><i></i>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-heading">
+                    <span>Active Alerts</span>
+                    <span class="kpi-icon orange">⚠</span>
+                </div>
+                <h2 id="alertCount">02</h2>
+                <p class="warning-text">Requires attention</p>
+                <div class="progress-track">
+                    <div class="progress-fill orange-fill" style="width:40%"></div>
+                </div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-heading">
+                    <span>Water Quality</span>
+                    <span class="kpi-icon green">✧</span>
+                </div>
+                <h2 id="qualityStatus">MONITOR</h2>
+                <p class="moderate-text">Model-based status</p>
+                <div class="quality-line"></div>
+            </article>
+
+        </section>
+
+        <!-- MONITORING STATIONS -->
+        <section class="content-section" id="stations">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Monitoring Stations</h2>
+                    <p>Water-quality sensor network</p>
+                </div>
+                <span class="simulation-tag">SIMULATED DATA</span>
+            </div>
+
+            <div class="station-grid" id="stationGrid"></div>
+
+        </section>
+
+        <!-- CHARTS -->
+        <section class="charts-grid" id="analytics">
+
+            <article class="panel chart-panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Water Quality Trends</h2>
+                        <p>Illustrative sensor readings</p>
+                    </div>
+                    <select id="parameterSelect">
+                        <option value="ph">pH</option>
+                        <option value="turbidity">Turbidity</option>
+                        <option value="tds">TDS</option>
+                        <option value="oxygen">Dissolved Oxygen</option>
+                    </select>
+                </div>
+
+                <div class="chart-info">
+                    <span id="chartParameter">pH Trend</span>
+                    <span class="simulation-tag">DEMO HISTORY</span>
+                </div>
+
+                <div class="chart-area">
+                    <div class="chart-values" id="chartValues"></div>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h2>Risk Distribution</h2>
+                        <p>Across five stations</p>
+                    </div>
+                </div>
+
+                <div class="risk-distribution" id="riskDistribution"></div>
+
+                <div class="legend">
+                    <span><i class="legend-dot low"></i> Low</span>
+                    <span><i class="legend-dot moderate"></i> Moderate</span>
+                    <span><i class="legend-dot high"></i> High</span>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ALERTS -->
+        <section class="panel alerts-panel" id="alerts">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Smart Alerts</h2>
+                    <p>Monitoring system notifications</p>
+                </div>
+                <span class="simulation-tag">DEMO ALERTS</span>
+            </div>
+
+            <div id="alertList"></div>
+
+        </section>
+
+        <!-- AI INSIGHTS -->
+        <section class="panel insights-panel" id="investigation">
+
+            <div class="section-heading">
+                <div>
+                    <h2>AI Environmental Insights</h2>
+                    <p>Decision-support information</p>
+                </div>
+                <span class="ai-badge">✦ AI INSIGHTS DEMO</span>
+            </div>
+
+            <div class="insight-content">
+                <div class="insight-icon">🧠</div>
+                <div>
+                    <h3>Monitoring Recommendation</h3>
+                    <p id="aiInsight">
+                        Station S04 has the highest illustrative risk score.
+                        Review its sensor readings and compare them with
+                        nearby monitoring stations before initiating an investigation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                These are simulated demonstration insights, not verified
+                contamination findings.
+            </div>
+
+        </section>
+
+        <!-- SIMULATOR -->
+        <section class="panel simulator-panel" id="simulator">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Contamination Scenario Simulator</h2>
+                    <p>Explore synthetic sensor scenarios</p>
+                </div>
+                <span class="simulation-tag">SYNTHETIC DEMO</span>
+            </div>
+
+            <div class="simulator-controls">
+                <select id="scenarioSelect">
+                    <option value="industrial">Industrial discharge</option>
+                    <option value="agricultural">Agricultural runoff</option>
+                    <option value="sewage">Sewage-related change</option>
+                    <option value="turbidity">Sudden turbidity increase</option>
+                </select>
+
+                <button id="simulateBtn" class="primary-btn">
+                    ▶ Run Simulation
+                </button>
+
+                <button id="resetBtn" class="secondary-btn">
+                    ↺ Reset
+                </button>
+            </div>
+
+            <div id="simulationResult" class="simulation-result">
+                Select a scenario and run the demonstration.
+            </div>
+
+        </section>
+<!-- WATER QUALITY RISK CHECKER -->
+<section class="panel risk-checker" id="risk-checker">
+
+    <div class="section-heading">
+        <div>
+            <h2>AI Water Quality Risk Checker</h2>
+            <p>Analyze water readings and estimate environmental risk</p>
+        </div>
+        <span class="status-badge">DEMO ANALYSIS</span>
+    </div>
+
+    <div class="risk-form">
+
+        <div class="form-group">
+            <label for="phValue">pH Value</label>
+            <input type="number" id="phValue"
+                   min="0" max="14" step="0.1"
+                   placeholder="Example: 7.2">
+        </div>
+
+        <div class="form-group">
+            <label for="turbidityValue">Turbidity (NTU)</label>
+            <input type="number" id="turbidityValue"
+                   min="0" step="0.1"
+                   placeholder="Example: 3.5">
+        </div>
+
+        <div class="form-group">
+            <label for="tdsValue">TDS (mg/L)</label>
+            <input type="number" id="tdsValue"
+                   placeholder="Example: 300">
+        </div>
+
+        <div class="form-group">
+            <label for="oxygenValue">Dissolved Oxygen (mg/L)</label>
+            <input type="number" id="oxygenValue"
+                   min="0" step="0.1"
+                   placeholder="Example: 7.5">
+        </div>
+
+        <button type="button" id="analyzeWater">
+            Analyze Water Quality
+        </button>
+
+    </div>
+
+    <div id="riskResult" class="risk-result" aria-live="polite">
+        <h3>Analysis Result</h3>
+        <p>Enter all four readings to start the analysis.</p>
+    </div>
+
+    <p class="disclaimer">
+        Demonstration risk estimate only. This is not a laboratory
+        test, drinking-water safety certification or real AI prediction.
+    </p>
+
+</section>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <h3>AQUAGUARD AI</h3>
+            <p>Predict. Protect. Prevent.</p>
+            <p>
+                AquaGuard AI is an environmental monitoring and early-warning
+                prototype. Sensor readings, model predictions and potential
+                investigation zones are decision-support information and do not
+                independently confirm contamination or drinking-water safety.
+                Verification requires calibrated measurements, laboratory
+                testing and appropriate regulatory procedures.
+            </p>
+            <p class="copyright">© 2026 AQUAGUARD AI | Development Demo</p>
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>
